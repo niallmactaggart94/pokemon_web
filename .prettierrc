@@ -1,0 +1,23 @@
+{
+	"printWidth": 120,
+	"useTabs": true,
+	"bracketSpacing": true,
+	"tabWidth": 4,
+	"singleQuote": true,
+	"trailingComma": "none",
+	"arrowParens": "avoid",
+	"overrides": [
+		{
+			"files": "{.prettierrc,.huskyrc,.lintstagedrc}",
+			"options": {
+				"parser": "json"
+			}
+		},
+		{
+			"files": ["*.yaml", "*.yml"],
+			"options": {
+				"tabWidth": 2
+			}
+		}
+	]
+}
