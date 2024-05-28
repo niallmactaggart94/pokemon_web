@@ -4,28 +4,18 @@ import { Palette } from '@mui/material/styles/createPalette';
 export const lightPalette = {
 	mode: 'light',
 	primary: {
-		main: Colors.Primary
-	},
-	secondary: {
-		main: Colors.GrayDark,
-		light: Colors.GrayLight,
-		dark: Colors.GrayDark3
+		main: Colors.Yellow
 	},
 	text: {
 		primary: Colors.Black,
-		secondary: Colors.DescriptionGray
+		secondary: Colors.Blue
 	}
 } as Palette;
 
 export default {
 	mode: 'dark',
 	primary: {
-		main: Colors.Primary
-	},
-	secondary: {
-		main: Colors.GrayDark,
-		light: Colors.GrayLight,
-		dark: Colors.GrayDark3
+		main: Colors.Blue
 	},
 	text: {
 		primary: Colors.White,

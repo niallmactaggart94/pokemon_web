@@ -1,0 +1,15 @@
+.screen {
+	display: flex;
+	flex: 1 1 auto;
+	overflow: hidden;
+	margin-top: $topHeaderHeight;
+	flex-direction: column;
+
+	&__content {
+		position: relative;
+		width: 100%;
+		min-height: calc(100vh - $topHeaderHeight);
+		background-color: $backgroundColor;
+		color: $text;
+	}
+}

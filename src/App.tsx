@@ -1,3 +1,4 @@
+import 'static/sass/App.scss';
 import { QueryClientProvider } from 'react-query';
 import { StyledEngineProvider, ThemeProvider } from '@mui/material/styles';
 import { StylesProvider } from '@mui/styles';

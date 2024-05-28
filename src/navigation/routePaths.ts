@@ -1,5 +1,6 @@
 export enum RoutePaths {
-	Home = '/'
+	Home = '/',
+	Play = '/play'
 }
 
 export default RoutePaths;

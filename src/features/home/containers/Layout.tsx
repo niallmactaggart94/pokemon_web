@@ -1,7 +1,7 @@
 import HeaderBar from 'common/components/HeaderBar/HeaderBar';
 import { LayoutProps } from 'navigation/RouteWithLayout';
 
-const Home = ({ children }: LayoutProps) => {
+const Layout = ({ children }: LayoutProps) => {
 	return (
 		<div className="mainWrapper">
 			<HeaderBar />
@@ -12,4 +12,4 @@ const Home = ({ children }: LayoutProps) => {
 	);
 };
 
-export default Home;
+export default Layout;

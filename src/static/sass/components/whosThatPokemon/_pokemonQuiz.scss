@@ -1,0 +1,21 @@
+.pokemonQuiz {
+	border-radius: 4px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	border: 1px solid #ffffff;
+	justify-content: center;
+	align-items: center;
+	background-color: #90aadc;
+
+	&__quizWrapper {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+.pokemonLoader {
+	margin-top: 20px;
+}
