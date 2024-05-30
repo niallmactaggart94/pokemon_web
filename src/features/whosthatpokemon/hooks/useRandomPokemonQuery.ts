@@ -9,9 +9,8 @@ interface UseRandomPokemonQuery {
 	isError: boolean;
 }
 
-export const useRandomPokemonQuery = (userRound: number, gameState: GameState): UseRandomPokemonQuery => {
+export const useRandomPokemonQuery = (userRound: number, gameState: GameState | null): UseRandomPokemonQuery => {
 	const queryCacheKey = [`${QueryCacheKey.RANDOM_POKEMON}_${userRound}`];
-
 	const queryFn = async () => {
 		if (gameState?.roundHistory[`round_${userRound}`]) {
 			return gameState.roundHistory[`round_${userRound}`];

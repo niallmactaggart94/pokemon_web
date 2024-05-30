@@ -6,7 +6,7 @@
 	border: 1px solid #ffffff;
 	justify-content: center;
 	align-items: center;
-	background-color: #90aadc;
+	background-color: $quizBackgroundColor;
 
 	&__quizWrapper {
 		display: flex;

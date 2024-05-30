@@ -1,0 +1,13 @@
+version: '3.5'
+
+networks:
+  pokemon_web_test_world:
+
+services:
+  pokemon_web_tests:
+    build:
+      context: .
+      dockerfile: docker/test.Dockerfile
+    volumes:
+      - ./:/test
+    command: sleep infinity

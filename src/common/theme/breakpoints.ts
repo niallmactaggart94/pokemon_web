@@ -14,4 +14,4 @@ export default {
 		lg: ScreenBreakpoint.LG,
 		xl: ScreenBreakpoint.XL
 	}
-} as any;
+};

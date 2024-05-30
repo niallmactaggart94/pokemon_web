@@ -11,7 +11,9 @@
     "build": "react-scripts --openssl-legacy-provider build",
     "eject": "react-scripts --openssl-legacy-provider eject",
     "start": "react-scripts --openssl-legacy-provider start",
-    "test": "jest"
+    "test": "react-scripts test",
+    "testAll": "CI=true npm test",
+    "lint": "eslint --ext ts,tsx src"
   },
   "author": "Niall MacTaggart",
   "license": "ISC",
@@ -37,7 +39,12 @@
     "@types/react-dom": "17.0.9",
     "eslint-config-prettier": "8.5.0",
     "prettier": "2.3.2",
-    "sass": "1.55.0"
+    "sass": "1.55.0",
+    "@testing-library/react-hooks": "8.0.1",
+    "@testing-library/jest-dom": "5.16.5",
+		"@testing-library/react": "11.2.7",
+    "react-test-renderer": "17.0.2"
+
   },
   "eslintConfig": {
     "extends": [
