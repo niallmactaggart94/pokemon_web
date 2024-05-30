@@ -21,7 +21,7 @@ const Home = () => {
 		<Box className="wtpHome">
 			<Box className="wtpHome__wrapper" sx={{ maxWidth: { lg: '50%' } }}>
 				<Typography variant="h1">Who&#39;s that pokemon?</Typography>
-				<img src={pikachuLogo} className="wtpHome__pikachuLogo" alt="pikachu" />
+				<img src={pikachuLogo} className="wtpHome__pikachuLogo" alt="pikachu" loading="lazy" />
 				<ActionableButtonGrid userActions={userActions} />
 			</Box>
 		</Box>

@@ -13,14 +13,16 @@ import {
 } from 'domain/game/gameManager';
 import GameOver from '../GameOver/GameOver';
 import Spinner from 'common/components/Spinner/Spinner';
+import QuizError from '../QuizError/QuizError';
 
-export const MAX_ROUNDS = 3;
+export const MAX_ROUNDS = 8;
 export const CORRECT_ANSWER_POINTS = 10;
 
 const PokemonQuiz = () => {
 	const [gameState, setGameState] = useState<GameState>(getGameStateFromStorage());
 	const [userRound, setUserRound] = useState<number>(gameState?.currentRound ?? 1);
 	const [userScore, setUserScore] = useState<number>(gameState?.currentScore ?? 0);
+	const [userGuess, setUserGuess] = useState<string>('');
 	const [isVerifyingAnswer, setIsVerifyingAnswer] = useState<boolean>(false);
 	const [verifiedAnswer, setVerifiedAnswer] = useState<VerifiedPokemonResponse | null>(null);
 	const [isVerifyError, setIsVerifyError] = useState<boolean>(false);
@@ -29,7 +31,8 @@ const PokemonQuiz = () => {
 	const {
 		randomPokemon,
 		isLoading: isFetchingRandomPokemon,
-		isError: isRandomPokemonError
+		isError: isRandomPokemonError,
+		refetch
 	} = useRandomPokemonQuery(userRound, gameState);
 
 	const nextRound = () => {
@@ -94,10 +97,13 @@ const PokemonQuiz = () => {
 				isFinished: userRound >= MAX_ROUNDS
 			};
 
+			setUserGuess('');
+			setIsVerifyError(false);
 			saveGameStateInStorage(updatedGameState);
 			setGameState(updatedGameState);
 		} catch (err) {
 			console.error(err);
+			setUserGuess(userGuess);
 			setIsVerifyError(true);
 		} finally {
 			setTimeout(() => setIsVerifyingAnswer(false), 1000);
@@ -107,10 +113,20 @@ const PokemonQuiz = () => {
 	const isLoading = isVerifyingAnswer || isFetchingRandomPokemon;
 	const isError = isRandomPokemonError || isVerifyError;
 
+	const retryCall = async (e: React.MouseEvent<HTMLButtonElement>) => {
+		isRandomPokemonError ? await refetch() : await handleUserGuess(e);
+	};
+
 	return (
 		<>
 			{isLoading && <Spinner className="pokemonLoader" />}
-			{isError && <Typography>Error</Typography>}
+			{isError && !isLoading && (
+				<QuizError
+					errorType={isRandomPokemonError ? 'random' : 'verify'}
+					retryCall={retryCall}
+					userGuess={userGuess}
+				/>
+			)}
 			{!isLoading && !isError && (
 				<Box
 					className="pokemonQuiz"

@@ -1,5 +1,5 @@
 import { QueryCacheKey } from 'common/constants/Common';
-import { useQuery } from 'react-query';
+import { QueryObserverResult, useQuery } from 'react-query';
 import { RandomPokemonReponse, fetchRandomPokemon } from '../services/pokemon';
 import { GameState } from 'domain/game/gameManager';
 
@@ -7,6 +7,7 @@ interface UseRandomPokemonQuery {
 	randomPokemon?: RandomPokemonReponse | null;
 	isLoading: boolean;
 	isError: boolean;
+	refetch: () => Promise<QueryObserverResult<RandomPokemonReponse | null>>;
 }
 
 export const useRandomPokemonQuery = (userRound: number, gameState: GameState | null): UseRandomPokemonQuery => {
@@ -18,11 +19,11 @@ export const useRandomPokemonQuery = (userRound: number, gameState: GameState | 
 		return fetchRandomPokemon();
 	};
 
-	const { data, isLoading, isError } = useQuery(queryCacheKey, queryFn, {
+	const { data, isLoading, isError, refetch } = useQuery(queryCacheKey, queryFn, {
 		enabled: !!userRound && !gameState?.isFinished,
 		refetchOnMount: 'always',
 		cacheTime: 0,
 		staleTime: 0
 	});
-	return { randomPokemon: data, isLoading, isError };
+	return { randomPokemon: data, isLoading, isError, refetch };
 };
